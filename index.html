@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=no">
+<title>TypeRush — Test de Vitesse de Frappe</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=JetBrains+Mono:wght@400;500;600;700&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="bg-decor" aria-hidden="true">
+  <span class="blob blob-1"></span>
+  <span class="blob blob-2"></span>
+  <span class="blob blob-3"></span>
+</div>
+
+<!-- ÉCRAN D'ACCUEIL -->
+<section id="home-screen" class="screen home-screen">
+  <div class="home-card">
+    <h1 class="logo">⚡ TypeRush</h1>
+    <p class="subtitle">Teste ta vitesse de frappe au clavier !</p>
+
+    <div class="best-scores">
+      <div class="best-score-box">
+        <span class="best-score-label">🟢 Facile</span>
+        <span class="best-score-value" id="best-easy">— WPM</span>
+      </div>
+      <div class="best-score-box">
+        <span class="best-score-label">🟡 Moyen</span>
+        <span class="best-score-value" id="best-medium">— WPM</span>
+      </div>
+      <div class="best-score-box">
+        <span class="best-score-label">🔴 Difficile</span>
+        <span class="best-score-value" id="best-hard">— WPM</span>
+      </div>
+    </div>
+
+    <div class="difficulty-select">
+      <p class="select-title">Choisis ta difficulté</p>
+      <div class="difficulty-options">
+        <button class="diff-btn active" data-difficulty="easy">
+          <span class="diff-icon">🟢</span>
+          <span class="diff-name">Facile</span>
+          <span class="diff-info">Mots simples</span>
+        </button>
+        <button class="diff-btn" data-difficulty="medium">
+          <span class="diff-icon">🟡</span>
+          <span class="diff-name">Moyen</span>
+          <span class="diff-info">Phrases courantes</span>
+        </button>
+        <button class="diff-btn" data-difficulty="hard">
+          <span class="diff-icon">🔴</span>
+          <span class="diff-name">Difficile</span>
+          <span class="diff-info">Texte technique</span>
+        </button>
+      </div>
+    </div>
+
+    <button id="start-btn" class="primary-btn">Commencer ▶</button>
+  </div>
+</section>
+
+<!-- ÉCRAN DE JEU -->
+<section id="game-screen" class="screen game-screen hidden">
+  <header class="game-header">
+    <button id="home-btn" class="icon-btn" aria-label="Retour à l'accueil">🏠</button>
+
+    <div class="stats">
+      <div class="stat-box">
+        <span class="stat-label">⏱️ Temps</span>
+        <span class="stat-value" id="timer">0.0s</span>
+      </div>
+      <div class="stat-box">
+        <span class="stat-label">⚡ WPM</span>
+        <span class="stat-value" id="live-wpm">0</span>
+      </div>
+      <div class="stat-box">
+        <span class="stat-label">🎯 Précision</span>
+        <span class="stat-value" id="live-accuracy">100%</span>
+      </div>
+    </div>
+
+    <button id="restart-btn" class="icon-btn" aria-label="Nouveau test">🔁</button>
+  </header>
+
+  <main class="type-area">
+    <div id="text-display" class="text-display" tabindex="0" aria-label="Zone de texte à reproduire"></div>
+    <textarea id="hidden-input" class="hidden-input" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" aria-hidden="true"></textarea>
+    <p class="type-hint">Clique ici et commence à taper pour démarrer le chronomètre</p>
+  </main>
+</section>
+
+<!-- OVERLAY DE RÉSULTATS -->
+<div id="result-overlay" class="overlay hidden">
+  <div class="result-card">
+    <div class="confetti" aria-hidden="true">🏁</div>
+    <h2>Test terminé !</h2>
+    <p class="result-sub" id="performance-message">Beau travail</p>
+
+    <div class="result-stats">
+      <div class="result-stat">
+        <span class="result-stat-label">Vitesse</span>
+        <span class="result-stat-value" id="result-wpm">0 WPM</span>
+      </div>
+      <div class="result-stat">
+        <span class="result-stat-label">Précision</span>
+        <span class="result-stat-value" id="result-accuracy">0%</span>
+      </div>
+      <div class="result-stat">
+        <span class="result-stat-label">Temps</span>
+        <span class="result-stat-value" id="result-time">0.0s</span>
+      </div>
+    </div>
+
+    <p id="new-record" class="new-record hidden">🏆 Nouveau record !</p>
+
+    <div class="result-actions">
+      <button id="retry-btn" class="primary-btn">Nouveau test 🔁</button>
+      <button id="back-home-btn" class="secondary-btn">Accueil 🏠</button>
+    </div>
+  </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
